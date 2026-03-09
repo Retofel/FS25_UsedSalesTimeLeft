@@ -1,0 +1,24 @@
+<?xml version="1.0" standalone="no"?>
+<modDesc descVersion="96">
+    <author>w33zl</author>
+    <version>1.0.0.0</version>
+    <title>
+        <en>TidyShop: ModTitles</en>
+        <de>TidyShop: Mod-Titel</de>
+        <fr>TidyShop: Titres De Modules</fr>
+    </title>
+    <description>
+<en><![CDATA[Enhances the way mod titles is displayed in the store. The "(Mod)" text is replaced by the author and mod version.]]></en>
+<de><![CDATA[Verbessert die Darstellung der Mod-Titel im Shop. Der "(Mod)"-Text wird durch den Autor und die Mod-Version ersetzt.]]></de>
+<fr><![CDATA[Améliore la façon dont les titres des mods sont présentés dans le magasin. Le texte "(Mod)" est remplacé par l'auteur et la version du mod.]]></fr>
+    </description>
+    <iconFilename>icon_TidyShop_ModTitles.dds</iconFilename>
+
+    <multiplayer supported="true" />
+
+    <extraSourceFiles>
+        <sourceFile filename="lib/LogHelper.lua" />
+        <sourceFile filename="lib/ModHelper.lua" />
+        <sourceFile filename="TidyShopModTitles.lua" />
+    </extraSourceFiles>
+</modDesc>

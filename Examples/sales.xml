@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<sales>
+    <item timeLeft="35" isGenerated="true" xmlFilename="C:/Users/gideon/Documents/My Games/FarmingSimulator2025/mods/FS25_Hostline_NX_pack/NX200.xml" age="27" price="12287" damage="0.571592" wear="0.384831" operatingTime="104349.273438"/>
+    <item timeLeft="27" isGenerated="true" xmlFilename="C:/Users/gideon/Documents/My Games/FarmingSimulator2025/mods/FS25_TreeSaplingPalletPack/treeSaplingPallet300.xml" age="32" price="2003" damage="0.407163" wear="0.582995" operatingTime="142243.125000">
+        <boughtConfiguration name="baseColor" id="CHALLENGER_YELLOW1"/>
+    </item>
+    <item timeLeft="26" isGenerated="true" xmlFilename="C:/Users/gideon/Documents/My Games/FarmingSimulator2025/mods/FS25_steyr_series8150/series8150.xml" age="20" price="49279" damage="0.264889" wear="0.218906" operatingTime="92361.132812">
+        <boughtConfiguration name="motor" id="2"/>
+        <boughtConfiguration name="designColor3" id="SHARED_BLACKJET"/>
+        <boughtConfiguration name="rimColor" id="FENDT_RED1"/>
+    </item>
+    <item timeLeft="33" isGenerated="true" xmlFilename="data/vehicles/poettinger/terria6040/terria6040.xml" age="11" price="32512" damage="0.472214" wear="0.277311" operatingTime="32521.896484"/>
+    <item timeLeft="37" isGenerated="true" xmlFilename="C:/Users/gideon/Documents/My Games/FarmingSimulator2025/mods/FS25_uniaRoller2_5/uniaRoller.xml" age="14" price="455" damage="0.272562" wear="0.303641" operatingTime="55925.312500"/>
+    <item timeLeft="31" isGenerated="true" xmlFilename="data/vehicles/kemper/n3003/n3003.xml" age="40" price="9983" damage="0.392626" wear="0.608403" operatingTime="126476.171875"/>
+    <item timeLeft="40" isGenerated="true" xmlFilename="C:/Users/gideon/Documents/My Games/FarmingSimulator2025/mods/FS25_poettingerEurocatNovacatPack/xml/poettingerEuroCat272ED.xml" age="12" price="7986" damage="0.588054" wear="0.744614" operatingTime="49499.625000"/>
+    <item timeLeft="36" isGenerated="true" xmlFilename="C:/Users/gideon/Documents/My Games/FarmingSimulator2025/mods/FS25_JohnDeere4320/JD_EYM_4320.xml" age="25" price="16732" damage="0.342355" wear="0.539823" operatingTime="107214.195312">
+        <boughtConfiguration name="design" id="2"/>
+        <boughtConfiguration name="motor" id="2"/>
+    </item>
+    <item timeLeft="39" isGenerated="true" xmlFilename="data/vehicles/albutt/wheelLoaderSilageFork/wheelLoaderSilageFork.xml" age="30" price="4205" damage="0.599461" wear="0.217976" operatingTime="135622.234375"/>
+    <item timeLeft="39" isGenerated="true" xmlFilename="C:/Users/gideon/Documents/My Games/FarmingSimulator2025/mods/FS25_IMAK_DF2000/DF2000.xml" age="35" price="5237" damage="0.569936" wear="0.411364" operatingTime="92652.570312"/>
+    <item timeLeft="45" isGenerated="true" xmlFilename="data/vehicles/aprilia/rx125/rx125.xml" age="23" price="1781" damage="0.526305" wear="0.853143" operatingTime="64992.039062"/>
+    <item timeLeft="48" isGenerated="true" xmlFilename="data/vehicles/arcusin/multipackD14/multipackD14.xml" age="21" price="29390" damage="0.394101" wear="0.869508" operatingTime="39524.003906"/>
+    <item timeLeft="34" isGenerated="true" xmlFilename="data/vehicles/amazone/citan15001C/citan15001C.xml" age="26" price="74711" damage="0.324161" wear="0.998699" operatingTime="108976.179688">
+        <boughtConfiguration name="wheel" id="DEFAULT_MICHELIN_omniBib"/>
+    </item>
+    <item timeLeft="31" isGenerated="true" xmlFilename="C:/Users/gideon/Documents/My Games/FarmingSimulator2025/mods/FS25_MaschioGaspardoPrimoIsotronic/xml/PrimoIsotronic.xml" age="17" price="9672" damage="0.314055" wear="0.576874" operatingTime="76944.789062"/>
+    <item timeLeft="47" isGenerated="true" xmlFilename="C:/Users/gideon/Documents/My Games/FarmingSimulator2025/mods/FS25_Gilles_Pack/xml/c12.xml" age="13" price="43078" damage="0.544635" wear="0.395520" operatingTime="60264.238281"/>
+    <item timeLeft="40" isGenerated="true" xmlFilename="data/vehicles/meridian/conveyAll1690/conveyAll1690.xml" age="6" price="17151" damage="0.434964" wear="0.263199" operatingTime="26522.285156"/>
+    <item timeLeft="48" isGenerated="true" xmlFilename="C:/Users/gideon/Documents/My Games/FarmingSimulator2025/mods/FS25_HorschTerrano4FX/horschTerrano4FX.xml" age="24" price="5801" damage="0.461456" wear="0.796532" operatingTime="69857.351562"/>
+    <item timeLeft="43" isGenerated="true" xmlFilename="C:/Users/gideon/Documents/My Games/FarmingSimulator2025/mods/FS25_EurospandPack/xml/fruit.xml" age="14" price="6274" damage="0.377552" wear="0.940724" operatingTime="28261.921875"/>
+    <item timeLeft="41" isGenerated="true" xmlFilename="data/vehicles/johnDeere/series9RX830/series9RX830.xml" age="20" price="347599" damage="0.367608" wear="0.653468" operatingTime="52664.085938"/>
+    <item timeLeft="42" isGenerated="true" xmlFilename="data/vehicles/deutzFahr/series7/series7.xml" age="8" price="144448" damage="0.325635" wear="0.863204" operatingTime="37320.593750"/>
+    <item timeLeft="42" isGenerated="true" xmlFilename="C:/Users/gideon/Documents/My Games/FarmingSimulator2025/mods/FS25_Riman_Pack/xml/PBRC_E.xml" age="40" price="1235" damage="0.438326" wear="0.606675" operatingTime="180841.125000"/>
+    <item timeLeft="10" isGenerated="true" xmlFilename="C:/Users/gideon/Documents/My Games/FarmingSimulator2025/mods/FS25_FiatAgri_F140HP/xml/FiatAgri_F140.xml" age="7" price="25503" damage="0.368863" wear="0.804461" operatingTime="26549.699219">
+        <boughtConfiguration name="design7" id="2"/>
+        <boughtConfiguration name="motor" id="2"/>
+        <boughtConfiguration name="design2" id="2"/>
+    </item>
+    <item timeLeft="44" isGenerated="true" xmlFilename="G:/Steam/steamapps/common/Farming Simulator 25/pdlc/highlandsFishingPack/vehicles/vaderstad/proceedV/proceedV.xml" age="27" price="55722" damage="0.265782" wear="0.879902" operatingTime="73453.367188"/>
+    <item timeLeft="61" isGenerated="true" xmlFilename="C:/Users/gideon/Documents/My Games/FarmingSimulator2025/mods/FS25_Claas_Torion_1511/xml/torion1511.xml" age="38" price="69190" damage="0.579410" wear="0.882403" operatingTime="81128.718750">
+        <boughtConfiguration name="rimColor" id="2"/>
+    </item>
+    <item timeLeft="51" isGenerated="true" xmlFilename="C:/Users/gideon/Documents/My Games/FarmingSimulator2025/mods/FS25_Maitre_Pack/Fenix60/fenix60.xml" age="35" price="9133" damage="0.309358" wear="0.206574" operatingTime="119443.390625"/>
+    <item timeLeft="47" isGenerated="true" xmlFilename="C:/Users/gideon/Documents/My Games/FarmingSimulator2025/mods/FS25_MF5650/xml/plataforma_milho.xml" age="35" price="4087" damage="0.342164" wear="0.565753" operatingTime="134931.609375">
+        <boughtConfiguration name="design" id="2"/>
+    </item>
+    <item timeLeft="46" isGenerated="true" xmlFilename="data/vehicles/amityTechnology/hrv12R/hrv12R.xml" age="26" price="77272" damage="0.269995" wear="0.838085" operatingTime="52645.757812"/>
+    <item timeLeft="56" isGenerated="true" xmlFilename="C:/Users/gideon/Documents/My Games/FarmingSimulator2025/mods/FS25_NewHollandTM/TMSS.xml" age="35" price="34623" damage="0.569586" wear="0.907235" operatingTime="68304.335938">
+        <boughtConfiguration name="attacherJoint" id="5"/>
+    </item>
+    <item timeLeft="66" isGenerated="true" xmlFilename="data/vehicles/kuhn/tf1512/tf1512.xml" age="7" price="10201" damage="0.416169" wear="0.956863" operatingTime="25837.861328"/>
+    <item timeLeft="54" isGenerated="true" xmlFilename="C:/Users/gideon/Documents/My Games/FarmingSimulator2025/mods/FS25_fendtFarmConPack/vehicles/fendt/gta380Frontloader/gta380Frontloader.xml" age="27" price="2545" damage="0.364270" wear="0.282122" operatingTime="49688.308594"/>
+    <item timeLeft="53" isGenerated="true" xmlFilename="data/vehicles/amityTechnology/cc1000/cc1000.xml" age="38" price="47986" damage="0.201881" wear="0.834360" operatingTime="157656.765625"/>
+    <item timeLeft="52" isGenerated="true" xmlFilename="C:/Users/gideon/Documents/My Games/FarmingSimulator2025/mods/FS25_StaraBruttus12000/Stara_Bruttus_12000.xml" age="23" price="22913" damage="0.504915" wear="0.446330" operatingTime="76579.570312"/>
+    <item timeLeft="49" isGenerated="true" xmlFilename="data/vehicles/annaburger/aw2227/aw2227.xml" age="8" price="27046" damage="0.251981" wear="0.677383" operatingTime="21599.724609"/>
+    <item timeLeft="58" isGenerated="true" xmlFilename="C:/Users/gideon/Documents/My Games/FarmingSimulator2025/mods/FS25_Farmall_EYM1206/Farmall_EYM1206.xml" age="13" price="15400" damage="0.405332" wear="0.959098" operatingTime="27891.417969">
+        <boughtConfiguration name="frontloader" id="2"/>
+        <boughtConfiguration name="wheel" id="4"/>
+    </item>
+</sales>

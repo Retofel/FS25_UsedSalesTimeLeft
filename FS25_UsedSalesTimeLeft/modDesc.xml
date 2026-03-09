@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" standalone="no"?>
-<modDesc descVersion="73">
+<modDesc descVersion="106">
     <author>Retofel</author>
     <version>0.0.0.1</version>
     <title>
@@ -8,7 +8,7 @@
     <description>
         <en>Shows remaining time for items in the used vehicle shop.</en>
     </description>
-    <iconFilename>icon.dds</iconFilename>
+    <iconFilename>icon_UsedSalesTimeLeft.dds</iconFilename>
     <multiplayer supported="false"/>
     <extraSourceFiles>
         <sourceFile filename="scripts/UsedSalesTimeLeft.lua"/>
