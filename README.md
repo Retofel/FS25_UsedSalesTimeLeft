@@ -10,12 +10,14 @@ In FS25, the used sales shop offers randomly generated items at reduced prices. 
 Coming soon!
 
 ## Installation
-> **Note:** This mod is only officially distributed through [ModHub](https://www.farming-simulator.com/mods.php) and [this GitHub repository](https://github.com/Retofel/FS25_UsedSalesTimeLeft). If you obtained it from another source, I recommend deleting it and downloading from one of these two places instead, as I have no control over what third-party sites may include in their copies.
+> [!IMPORTANT]
+> This mod is only officially distributed through [ModHub](https://www.farming-simulator.com/mods.php) and [this GitHub repository](https://github.com/Retofel/FS25_UsedSalesTimeLeft). If you obtained it from another source, I recommend deleting it and downloading from one of these two places instead, as I have no control over what third-party sites may include in their copies.
 
+### ModHub download - Recommended
 * The latest stable version will be (hopefully) available on modhub, so check this link first: [ModHub](https://www.farming-simulator.com/mods.php)
 
-If you want to download the mod from this repository:
-1. Download the latest release (`FS25_UsedSalesTimeLeft.zip`) from the releases page: [Releases](https://github.com/Retofel/FS25_UsedSalesTimeLeft/releases)
+### GitHub respository download
+1. Download the latest release (`FS25_UsedSalesTimeLeft.zip`) from the [Releases page](https://github.com/Retofel/FS25_UsedSalesTimeLeft/releases)
 2. Place the zip file in your mods folder (for windows, typically `C:\Users\<your username>\Documents\My Games\FarmingSimulator2025\mods`)
 3. Enable the mod in the in-game mod manager.
 
