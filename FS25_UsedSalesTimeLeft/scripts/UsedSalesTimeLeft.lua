@@ -32,6 +32,28 @@ function UsedSalesTimeLeft:loadMap(filename)
                         sale.wear or 0,
                         sale.damage or 0
                     ))
+
+                    -- Add or update the time left display
+                    local valueCell = cell:getAttribute("value")
+                    local priceTagCell = cell:getAttribute("priceTag")
+                    if cell.ustlTimeLeft == nil then
+                        local timeLeftElement = valueCell:clone()
+                        timeLeftElement.name = "ustlTimeLeft"
+                        timeLeftElement.textUpperCase = false
+                        timeLeftElement.textAlignment = RenderText.ALIGN_LEFT
+                        -- Position at bottom-left, same vertical as priceTag
+                        local pos = priceTagCell.position
+                        timeLeftElement:setPosition(0, pos[2])
+                        cell:addElement(timeLeftElement)
+                        cell.ustlTimeLeft = timeLeftElement
+                    end
+                    cell.ustlTimeLeft:setTextColor(1, 1, 1, 1)
+                    cell.ustlTimeLeft:setText(string.format("Time left: %dh", math.floor(sale.timeLeft)))
+                else
+                    -- Cell is recycled for a non-sale item, hide our element if it exists
+                    if cell.ustlTimeLeft ~= nil then
+                        cell.ustlTimeLeft:setText("")
+                    end
                 end
 
                 return returnValue
