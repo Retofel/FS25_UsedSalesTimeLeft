@@ -17,7 +17,7 @@ Coming soon!
 * The latest stable version will be (hopefully) available on modhub, so check this link first: [ModHub](https://www.farming-simulator.com/mods.php)
 
 ### GitHub repository download
-1. Download the any version you like (`FS25_UsedSalesTimeLeft.zip`) from the [Releases page](https://github.com/Retofel/FS25_UsedSalesTimeLeft/releases)
+1. Download any version you like (`FS25_UsedSalesTimeLeft.zip`) from the [Releases page](https://github.com/Retofel/FS25_UsedSalesTimeLeft/releases)
 2. Place the zip file in your mods folder (for windows, typically `C:\Users\<your username>\Documents\My Games\FarmingSimulator2025\mods`)
 3. Enable the mod in the in-game mod manager.
 
