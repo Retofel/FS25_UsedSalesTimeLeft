@@ -47,3 +47,41 @@ To create the mod zip: select the **contents** of `FS25_UsedSalesTimeLeft/` (not
 
 ## Language
 Lua (FS25 scripting language)
+
+## Knowledge base (`knowledge_base/`)
+PDF reference books for FS modding. To extract text from these, use `py -X utf8` with the `pypdf` library (installed globally).
+
+### Book_ScriptingFarmingSimulatorWithLua.pdf (343 pages) — **HIGH relevance**
+"Scripting Farming Simulator with Lua: Unlocking the Virtual Fields" by Zander Brumbaugh & Manuel Leithner (2024, GIANTS Software, Open Access CC-BY-4.0).
+- Ch 2: GIANTS Editor setup
+- Ch 3: Lua programming fundamentals (variables, tables, loops, functions, classes)
+- Ch 4: GIANTS Studio and debugging
+- Ch 5-7: Practical mod projects (Diner, Rotating Mower, Speed Trap Trailer)
+- **Ch 8: Mileage Counter HUD Mod** — most relevant chapter; script-only HUD mod similar to ours
+- Ch 9: Multibale Spawner Mod
+- Ch 10: Money Cheat Mod
+- Ch 11: Publishing on ModHub
+- **Ch 12: API reference appendix** — transforms, entities, physics, networking, I3D loading
+
+### FarmingSimulatorModding_en.pdf (252 pages) — **MEDIUM relevance**
+"Farming Simulator Modding For Dummies" by Jason van Gumster & Christian Ammann (2014, Wiley). Covers FS13/15 era — APIs may be outdated.
+- Ch 1-5: GIANTS Editor, maps, terrain, materials, particles (not relevant to script mods)
+- **Ch 6: modDesc.xml setup** — relevant for mod descriptor structure
+- Ch 7-10: 3D modeling, textures, sounds (not relevant)
+- **Ch 12: Defining New Objects and Behaviors with Lua** — specializations, `Utils.lua` patterns
+- Ch 13: Packaging and distribution
+
+### moddersGuideToTheModHubEN_v2.pdf (15 pages) — **LOW relevance (for now)**
+"Modder's Guide to the ModHub" by GIANTS Software. Short guide on planning, uploading to ModHub, testing, feedback, and monetization. Useful when ready to publish.
+
+### How to read PDFs programmatically
+```bash
+py -X utf8 -c "
+from pypdf import PdfReader
+r = PdfReader('knowledge_base/FILENAME.pdf')
+print(f'Pages: {len(r.pages)}')
+for i in range(START_PAGE, END_PAGE):
+    print(r.pages[i].extract_text())
+"
+```
+Note: page indices are 0-based (page 1 = index 0).
