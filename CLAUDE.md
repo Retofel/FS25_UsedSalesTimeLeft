@@ -42,6 +42,37 @@ The sale system is at `g_currentMission.vehicleSaleSystem` (items are empty at `
 ## Game source reference
 Game Lua source is in `G:\Steam\steamapps\common\Farming Simulator 25\sdk\debugger\gameSource.zip`. Extracted to `Examples/gameSource/` for reference. Note: most function bodies are stripped/empty — only signatures and comments are visible.
 
+## FS25 Community Lua Documentation (online)
+Community-maintained API docs at: https://github.com/umbraprior/FS25-Community-LUADOC/tree/main/docs
+
+Raw file access pattern: `https://raw.githubusercontent.com/umbraprior/FS25-Community-LUADOC/main/docs/{path}`
+
+### `docs/engine/` — Engine-level APIs (32 folders)
+Low-level GIANTS engine bindings: Animation, Camera, Debug, Entity, Fillplanes, Foliage, General, I3D, Input, Lighting, Math, NavMesh, Network, Node, NoteNode, Overlays, Particle System, Physics, PointList2D, Precipitation, Rendering, ShallowWaterSimulation, Shape, Sound, Spline, String, Terrain Detail, Terrain, Text Rendering, Tire Track, VoiceChat, XML.
+
+### `docs/foundation/` — Foundation layer (2 folders)
+Mid-level framework: Input, Scenegraph.
+
+### `docs/script/` — Game script classes (54 folders) — **most relevant**
+High-level game systems. All folders (★ = most relevant to this mod):
+- AI, Activatables, Animals, Animation, Base, Boatyard, Collections, Components, Configurations, Contracts, Data, Debug
+- ★ **Economy** — economy/pricing systems
+- ★ **Elements** — UI element classes
+- Errors
+- ★ **Events** — network events
+- Extensions, Farms, Ferry, Field, FillTypes, Fruits, Graphical, Graphics
+- ★ **GUI** — UI framework and screens
+- GuidedTour, Handtools
+- ★ **Hud** — HUD overlay elements
+- I3d, Input, Instances, Jobs, Materials
+- ★ **Misc** — miscellaneous helpers
+- Missions, Networking, Objects, Parameters, Placeables, Placement, Player, Rollercoaster, Ship
+- ★ **Shop** — shop system classes (ShopItemsFrame, etc.)
+- Sounds, Specialization, Specializations, StateMachine, Tasks, Triggers
+- ★ **Utils** — utility functions
+- ★ **Vehicles** — vehicle system
+- Weather, Wheels
+
 ## Packaging
 To create the mod zip: select the **contents** of `FS25_UsedSalesTimeLeft/` (not the folder itself) and zip them. The zip must be named `FS25_UsedSalesTimeLeft.zip` and placed in the game's `mods` folder.
 
