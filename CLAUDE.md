@@ -42,8 +42,9 @@ The sale system is at `g_currentMission.vehicleSaleSystem` (items are empty at `
 ## Game source reference
 Game Lua source is in `G:\Steam\steamapps\common\Farming Simulator 25\sdk\debugger\gameSource.zip`. Extracted to `Examples/gameSource/` for reference. Note: most function bodies are stripped/empty — only signatures and comments are visible.
 
-## FS25 Community Lua Documentation (online)
+## FS25 Community Lua Documentation (online) — **CHECK HERE FIRST for any FS25 Lua API questions**
 Community-maintained API docs at: https://github.com/umbraprior/FS25-Community-LUADOC/tree/main/docs
+This is the primary reference for FS25 Lua commands and classes. Always consult these docs before falling back to the knowledge base PDFs or other sources.
 
 Raw file access pattern: `https://raw.githubusercontent.com/umbraprior/FS25-Community-LUADOC/main/docs/{path}`
 
