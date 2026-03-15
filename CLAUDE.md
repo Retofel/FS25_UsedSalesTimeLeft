@@ -46,7 +46,7 @@ Game Lua source is in `G:\Steam\steamapps\common\Farming Simulator 25\sdk\debugg
 Community-maintained API docs at: https://github.com/umbraprior/FS25-Community-LUADOC/tree/main/docs
 This is the primary reference for FS25 Lua commands and classes. Always consult these docs before falling back to the knowledge base PDFs or other sources.
 
-Raw file access pattern: `https://raw.githubusercontent.com/umbraprior/FS25-Community-LUADOC/main/docs/{path}`
+Raw file access pattern: `https://raw.githubusercontent.com/umbraprior/FS25-Community-LUADOC/refs/heads/main/docs/{path}` (files are `.md` format, not `.lua`)
 
 ### `docs/engine/` — Engine-level APIs (32 folders)
 Low-level GIANTS engine bindings: Animation, Camera, Debug, Entity, Fillplanes, Foliage, General, I3D, Input, Lighting, Math, NavMesh, Network, Node, NoteNode, Overlays, Particle System, Physics, PointList2D, Precipitation, Rendering, ShallowWaterSimulation, Shape, Sound, Spline, String, Terrain Detail, Terrain, Text Rendering, Tire Track, VoiceChat, XML.
