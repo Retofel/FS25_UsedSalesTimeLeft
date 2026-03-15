@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:raw.githubusercontent.com)",
+      "Bash(curl -sL \"https://raw.githubusercontent.com/umbraprior/FS25-Community-LUADOC/refs/heads/main/docs/script/GUI/TextElement.md\")"
+    ]
+  }
+}

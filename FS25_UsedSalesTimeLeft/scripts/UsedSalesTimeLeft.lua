@@ -41,6 +41,10 @@ function UsedSalesTimeLeft:loadMap(filename)
                         timeLeftElement.name = "ustlTimeLeft"
                         timeLeftElement.textUpperCase = false
                         timeLeftElement.textAlignment = RenderText.ALIGN_LEFT
+                        -- Set defaultTextSize so setText() resets to our desired size, not the cloned original
+                        local desiredSize = valueCell.textSize * 0.6
+                        timeLeftElement.defaultTextSize = desiredSize
+                        timeLeftElement.textSize = desiredSize
                         -- Position at bottom-left, same vertical as priceTag
                         local pos = priceTagCell.position
                         timeLeftElement:setPosition(0, pos[2])
