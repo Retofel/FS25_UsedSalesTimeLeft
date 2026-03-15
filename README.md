@@ -21,8 +21,8 @@ Coming soon!
 2. Place the zip file in your mods folder (for windows, typically `C:\Users\<your username>\Documents\My Games\FarmingSimulator2025\mods`)
 3. Enable the mod in the in-game mod manager.
 
-## Known Issues
-Known issues, bugs, and planned features can be found on the [Issues page](https://github.com/Retofel/FS25_UsedSalesTimeLeft/issues).
+## Support
+Found a bug? Want to suggest a new feature? Open a new issue in the [Issues page](https://github.com/Retofel/FS25_UsedSalesTimeLeft/issues).
 
 ## Changelog
 See the [CHANGELOG file](https://github.com/Retofel/FS25_UsedSalesTimeLeft/blob/main/CHANGELOG.md) for a detailed list of changes in all versions.
