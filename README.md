@@ -1,4 +1,4 @@
-# FS25_UsedSalesTimeLeft - By Retofel
+# FS25_UsedSalesTimeLeft
 
 A Farming Simulator 25 mod that shows the remaining time (in hours) for each item in the used vehicle sales shop.
 
