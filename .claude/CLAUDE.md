@@ -106,6 +106,9 @@ PDF reference books for FS modding. To extract text from these, use `py -X utf8`
 ### moddersGuideToTheModHubEN_v2.pdf (15 pages) — **LOW relevance (for now)**
 "Modder's Guide to the ModHub" by GIANTS Software. Short guide on planning, uploading to ModHub, testing, feedback, and monetization. Useful when ready to publish.
 
+### [ModHub Guidelines - Farming Simulator 25](https://forum.giants-software.com/viewtopic.php?t=209169) (forum post) — **LOW relevance (for now)**
+Official GIANTS forum post covering ModHub submission guidelines: testing process (5 stages), metadata standards (icons, screenshots, filenames), console requirements, description templates, and modder rewards/compensation. Useful when preparing to publish on ModHub.
+
 ### How to read PDFs programmatically
 ```bash
 py -X utf8 -c "
