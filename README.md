@@ -7,7 +7,7 @@ A Farming Simulator 25 mod that shows the remaining time (in hours) for each ite
 In FS25, the used sales shop offers randomly generated items at reduced prices. Each item has a time limit before it's removed from the shop. This mod displays that remaining time directly in the shop UI, so you can see at a glance how long each deal will be available.
 
 ## Screenshots
-Coming soon!
+![Used Sales Time Left screenshot](assets/Screenshot%20v0.0.2.1.png)
 
 ## Installation
 > [!IMPORTANT]
