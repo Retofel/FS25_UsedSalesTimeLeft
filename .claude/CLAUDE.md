@@ -4,7 +4,7 @@
 A Farming Simulator 25 (PC) script mod that displays the remaining time (in hours) for each item listed in the in-game **used vehicle sales shop**. The game stores these items in `sales.xml` (per save), each with a `timeLeft` attribute representing hours before the item is removed from the shop.
 
 ## Current status
-Work in progress. The shop hook is working — the mod successfully hooks into `ShopItemsFrame.populateCellForItemInSection` and can identify used sale items via `displayItem.saleItem ~= nil`. Currently it logs each used sale item's details to the game log. **Next step:** replace the debug logging with actual UI modification to display `timeLeft` on each item in the shop.
+Core functionality is implemented and working. The mod hooks into `ShopItemsFrame.populateCellForItemInSection` and displays hours remaining (e.g. "24h left") on each used sale item in the shop UI. The time label is cloned from the value cell element, scaled down to 70% font size, and positioned at the bottom-left of the cell (aligned with priceTag's Y position). All mod logic is wrapped in `pcall` for error protection. Debug logging is available via `IS_DEBUG` flag but disabled by default.
 
 ## Project structure
 - `FS25_UsedSalesTimeLeft/` — the actual mod folder (this gets zipped for distribution)
