@@ -1,5 +1,9 @@
 # Changelog
 
+## v0.0.2.1:
+- Updated mod icon with new higher-resolution branding in the correct GIANTS format + background
+- Some tidying up of project folders.
+
 ## v0.0.2.0:
 - Extract configuration constants (TEXT_FORMAT, FONT_SIZE_FACTOR, IS_DEBUG) to top-level for easy customization
 - Wrap shop hook logic in pcall to prevent mod errors from crashing the game
