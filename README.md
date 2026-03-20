@@ -30,5 +30,8 @@ See the [CHANGELOG file](https://github.com/Retofel/FS25_UsedSalesTimeLeft/blob/
 ## License
 This mod is distributed under the [GNU General Public License v3.0](https://www.gnu.org/licenses/gpl-3.0.en.html).
 
+## Disclaimer
+This mod is provided "as is", without warranty of any kind. Use it at your own risk. I, the author am not responsible for any issues, crashes, or damage to save games that may result from using this mod. That said, I do my best to keep it stable and bug-free. If you encounter any problems, please report them (constructively please 😊) on the [Issues page](https://github.com/Retofel/FS25_UsedSalesTimeLeft/issues) — bug reports help me improve the mod for everyone!
+
 ## Youtube channel
 Head over to my [YouTube channel](https://www.youtube.com/@Retofel), for some nice Farming Simulator 25 videos. Thank you! ❤️
