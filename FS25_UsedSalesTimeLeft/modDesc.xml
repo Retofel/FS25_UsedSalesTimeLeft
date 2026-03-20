@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="no"?>
 <modDesc descVersion="106">
     <author>Retofel</author>
-    <version>0.0.2.1</version>
+    <version>0.0.3.0</version>
     <title>
         <en>Used Sales Time Left</en>
     </title>
     <description>
-        <en>Shows remaining time for items in the used vehicle shop.</en>
+        <en>Displays the time left in in-game hours for each item in the Used Vehicle Sale shop.
+
+For bug reports and feature requests, see: https://github.com/Retofel/FS25_UsedSalesTimeLeft</en>
     </description>
     <iconFilename>icon_UsedSalesTimeLeft.dds</iconFilename>
     <multiplayer supported="false"/>

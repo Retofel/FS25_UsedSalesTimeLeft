@@ -4,25 +4,64 @@
 A Farming Simulator 25 (PC) script mod that displays the remaining time (in hours) for each item listed in the in-game **used vehicle sales shop**. The game stores these items in `sales.xml` (per save), each with a `timeLeft` attribute representing hours before the item is removed from the shop.
 
 ## Current status
-Core functionality is implemented and working. The mod hooks into `ShopItemsFrame.populateCellForItemInSection` and displays hours remaining (e.g. "24h left") on each used sale item in the shop UI. The time label is cloned from the value cell element, scaled down to 70% font size, and positioned at the bottom-left of the cell (aligned with priceTag's Y position). All mod logic is wrapped in `pcall` for error protection. Debug logging is available via `IS_DEBUG` flag but disabled by default.
+Core functionality is implemented and working. The mod hooks into `ShopItemsFrame.populateCellForItemInSection` and displays hours remaining (e.g. "5h left") in a styled green box on each used sale item in the shop UI. The time-left box is cloned from the `priceTag` discount element (a `ThreePartBitmapElement`) so it inherits the game's green background, font, and state-dependent colors (green normally, black when selected/highlighted). The box is positioned at the bottom-left of each cell and auto-sizes its width to fit the text content. All mod logic is wrapped in `pcall` for error protection. Debug logging is available via `IS_DEBUG` flag (currently enabled for development).
 
 ## Project structure
 - `FS25_UsedSalesTimeLeft/` — the actual mod folder (this gets zipped for distribution)
   - `modDesc.xml` — mod descriptor (descVersion must match current FS25 version, currently `106`)
   - `scripts/UsedSalesTimeLeft.lua` — main mod script
-  - `icon_UsedSalesTimeLeft.dds` — mod icon (256x256 DDS)
-- `Examples/` — reference mods for learning patterns
-- `sales.xml` — example of the game's sales data file
+  - `icon_UsedSalesTimeLeft.dds` — mod icon (512x512 DDS, BC1 format, no mipmaps)
+- `examples/` — reference mods for learning patterns
+- `examples/sales.xml` — example of the game's sales data file
 
 ## FS25 modding patterns
 - Mods hook into game classes using `Utils.appendedFunction`, `Utils.prependedFunction`, or `Utils.overwrittenFunction`
 - `addModEventListener(mod)` registers lifecycle events (`loadMap`, `deleteMap`, `update`, etc.)
 - Global objects: `g_currentMission`, `g_modManager`, `g_currentModDirectory`, `g_currentModName`
 - Shop item display uses `ShopItemsFrame.populateCellForItemInSection` — this is the function to hook for modifying how items appear in the shop list
-- Cell attributes available: `modDlc`, `priceTag`, `value` (accessed via `cell:getAttribute("name")`)
+- Cell attributes available: `modDlc`, `priceTag`, `priceTagText`, `brandIcon`, `value`, `icon`, `title` (accessed via `cell:getAttribute("name")`)
+- `priceTag` is the green discount box (`ThreePartBitmapElement`) with 1 child (`TextElement`), overlay color `0.22,0.41,0.00,1.00`
 - Display items accessed via `self.displayItems[index]`
 - Hooks can be placed at script top level (runs on load) or inside `loadMap` (runs when save loads)
 - Game log file: `log.txt` in the FS25 user profile folder
+
+## GUI element positioning & rendering knowledge (hard-won)
+These lessons were discovered through iterative in-game testing. They are NOT documented in the FS25 API docs.
+
+### Layout system overrides `setPosition()`
+Setting `position` via `setPosition()` does NOT reliably control where elements render. The layout system computes `absPosition` from position+anchors+parent layout, and `absPosition` is what `draw()` uses. Even setting `layoutIgnore = true` didn't prevent this. **The only reliable way to control position of a cloned element is to override its `draw()` method** and set `absPosition` directly before calling the original draw.
+
+### draw() override pattern for positioning and sizing
+Override the instance's `draw()` method (not the class method) to intercept after layout but before rendering:
+```lua
+local origDraw = element.draw
+element.draw = function(drawSelf, clipX1, clipY1, clipX2, clipY2)
+    -- Modify drawSelf.absPosition and drawSelf.absSize here
+    -- Also update children's absPosition/absSize to match
+    origDraw(drawSelf, clipX1, clipY1, clipX2, clipY2)
+end
+```
+This works because `draw()` is called after layout computation. By setting `absPosition`/`absSize` just before the original draw, you get the final say on where and how big the element renders.
+
+### Auto-sizing ThreePartBitmapElement width
+Use engine globals `getTextWidth(fontSize, text)` and `setTextBold(bool)` to measure text, then set `absSize[1]` to the measured width plus padding. Must also set child `TextElement.absSize[1]` to match. Store the text string on the element (e.g. `element.ustlText`) so the draw override can access it.
+
+### Text alignment with ALIGN_CENTER
+`RenderText.ALIGN_CENTER` centers text within the `TextElement`'s `absSize` width, starting from `absPosition[1]`. So to center text in a box:
+- Set child `absPosition[1]` to the **left edge** of the box (NOT the midpoint)
+- Set child `absSize[1]` to the full box width
+- The engine centers the text within that span
+
+Setting `absPosition[1]` to the midpoint with `ALIGN_CENTER` will render text starting from the midpoint, pushed to the right.
+
+### TextElement format property
+`format = 1` is PERCENTAGE format — it mangles non-percentage strings. Set `format = 0` for plain text display.
+
+### ThreePartBitmapElement has no setText()
+Text must be set on the child `TextElement` (at `element.elements[1]`), not on the ThreePartBitmap itself.
+
+### Cell recycling
+Cells are recycled as the user scrolls. Cloned elements persist on the cell, so use a flag (e.g. `cell.ustlTimeLeft`) to track whether the element has already been created. Hide with `setVisible(false)` when the cell shows a non-sale item.
 
 ## Used sale item data structure
 Used sale items are identified by `displayItem.saleItem ~= nil`. The `saleItem` table contains:
@@ -46,10 +85,25 @@ Game Lua source is in `G:\Steam\steamapps\common\Farming Simulator 25\sdk\debugg
 Community-maintained API docs at: https://github.com/umbraprior/FS25-Community-LUADOC/tree/main/docs
 This is the primary reference for FS25 Lua commands and classes. Always consult these docs before falling back to the knowledge base PDFs or other sources.
 
-Raw file access pattern: `https://raw.githubusercontent.com/umbraprior/FS25-Community-LUADOC/refs/heads/main/docs/{path}` (files are `.md` format, not `.lua`)
+### How to fetch raw files
+Base URL: `https://raw.githubusercontent.com/umbraprior/FS25-Community-LUADOC/main/docs/`
+All files are `.md` format. Append the path after `docs/`.
+
+**Examples:**
+- `https://raw.githubusercontent.com/umbraprior/FS25-Community-LUADOC/main/docs/script/GUI/ShopItemsFrame.md`
+- `https://raw.githubusercontent.com/umbraprior/FS25-Community-LUADOC/main/docs/script/Utils/Utils.md`
+- `https://raw.githubusercontent.com/umbraprior/FS25-Community-LUADOC/main/docs/engine/General/General.md`
+
+**Important:** Some folder names contain spaces (e.g., `Particle System`, `Text Rendering`, `Tire Track`). URL-encode spaces as `%20` when fetching raw files.
+
+### How to discover files in a folder
+Use the GitHub API to list folder contents before fetching:
+`https://api.github.com/repos/umbraprior/FS25-Community-LUADOC/contents/docs/{folder_path}`
+This returns JSON with all files/subfolders. Use this to find the correct filename before fetching raw content.
 
 ### `docs/engine/` — Engine-level APIs (32 folders)
-Low-level GIANTS engine bindings: Animation, Camera, Debug, Entity, Fillplanes, Foliage, General, I3D, Input, Lighting, Math, NavMesh, Network, Node, NoteNode, Overlays, Particle System, Physics, PointList2D, Precipitation, Rendering, ShallowWaterSimulation, Shape, Sound, Spline, String, Terrain Detail, Terrain, Text Rendering, Tire Track, VoiceChat, XML.
+Low-level GIANTS engine bindings:
+Animation, Camera, Debug, Entity, Fillplanes, Foliage, General, I3D, Input, Lighting, Math, NavMesh, Network, Node, NoteNode, Overlays, Particle%20System, Physics, PointList2D, Precipitation, Rendering, ShallowWaterSimulation, Shape, Sound, Spline, String, Terrain%20Detail, Terrain, Text%20Rendering, Tire%20Track, VoiceChat, XML.
 
 ### `docs/foundation/` — Foundation layer (2 folders)
 Mid-level framework: Input, Scenegraph.
@@ -57,22 +111,29 @@ Mid-level framework: Input, Scenegraph.
 ### `docs/script/` — Game script classes (54 folders) — **most relevant**
 High-level game systems. All folders (★ = most relevant to this mod):
 - AI, Activatables, Animals, Animation, Base, Boatyard, Collections, Components, Configurations, Contracts, Data, Debug
-- ★ **Economy** — economy/pricing systems
-- ★ **Elements** — UI element classes
-- Errors
-- ★ **Events** — network events
+- ★ **Economy** (2 files) — economy/pricing systems
+- ★ **Elements** (4 files) — UI element classes
+- Errors (29 files)
+- ★ **Events** (100+ files) — network events
 - Extensions, Farms, Ferry, Field, FillTypes, Fruits, Graphical, Graphics
-- ★ **GUI** — UI framework and screens
+- ★ **GUI** (92 files) — UI framework and screens (**ShopItemsFrame is here**, not in Shop/)
 - GuidedTour, Handtools
-- ★ **Hud** — HUD overlay elements
+- ★ **Hud** (7 files) — HUD overlay elements
 - I3d, Input, Instances, Jobs, Materials
-- ★ **Misc** — miscellaneous helpers
+- ★ **Misc** (25 files) — miscellaneous helpers
 - Missions, Networking, Objects, Parameters, Placeables, Placement, Player, Rollercoaster, Ship
-- ★ **Shop** — shop system classes (ShopItemsFrame, etc.)
-- Sounds, Specialization, Specializations, StateMachine, Tasks, Triggers
-- ★ **Utils** — utility functions
-- ★ **Vehicles** — vehicle system
+- ★ **Shop** (5 files) — shop system classes (StoreManager, etc. — but **not** ShopItemsFrame)
+- Sounds, Specialization, Specializations (140+ files), StateMachine, Tasks, Triggers
+- ★ **Utils** (16 files) — utility functions
+- ★ **Vehicles** (20 files) — vehicle system
 - Weather, Wheels
+
+### Key files for this mod
+- `script/GUI/ShopItemsFrame.md` — the main class we hook into
+- `script/GUI/GuiElement.md` — base UI element class
+- `script/Shop/StoreManager.md` — store/shop management
+- `script/Utils/Utils.md` — utility functions (appendedFunction, etc.)
+- `script/Misc/` — miscellaneous helpers
 
 ## Packaging
 To create the mod zip: select the **contents** of `FS25_UsedSalesTimeLeft/` (not the folder itself) and zip them. The zip must be named `FS25_UsedSalesTimeLeft.zip` and placed in the game's `mods` folder.
@@ -106,7 +167,7 @@ PDF reference books for FS modding. To extract text from these, use `py -X utf8`
 ### moddersGuideToTheModHubEN_v2.pdf (15 pages) — **LOW relevance (for now)**
 "Modder's Guide to the ModHub" by GIANTS Software. Short guide on planning, uploading to ModHub, testing, feedback, and monetization. Useful when ready to publish.
 
-### [ModHub Guidelines - Farming Simulator 25](https://forum.giants-software.com/viewtopic.php?t=209169) (forum post) — **LOW relevance (for now)**
+### [ModHub Guidelines - Farming Simulator 25](https://forum.giants-software.com/viewtopic.php?t=209169) (forum post) — 
 Official GIANTS forum post covering ModHub submission guidelines: testing process (5 stages), metadata standards (icons, screenshots, filenames), console requirements, description templates, and modder rewards/compensation. Useful when preparing to publish on ModHub.
 
 ### How to read PDFs programmatically

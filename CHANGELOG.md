@@ -1,5 +1,14 @@
 # Changelog
 
+## v0.0.3.0:
+- Styled time-left display as a green box matching the game's discount tag (cloned from `priceTag` ThreePartBitmapElement)
+- Box inherits game's state-dependent colors (green normally, black when selected/highlighted)
+- Box auto-sizes width to fit text content using draw() override
+- Reliable left-side positioning via draw() override (bypasses layout system)
+- Refactored mod logic into dedicated functions (`createTimeLeftBox`, `updateTimeLeftDisplay`, `debugLogCellAttributes`)
+- Hide time-left box with `setVisible(false)` instead of clearing text on recycled cells
+- Updated mod description in modDesc.xml with link to GitHub for bug reports and feature requests
+
 ## v0.0.2.1:
 - Updated mod icon with new higher-resolution branding in the correct GIANTS format + background
 - Some tidying up of project folders.
