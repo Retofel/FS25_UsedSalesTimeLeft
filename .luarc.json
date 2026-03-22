@@ -1,0 +1,10 @@
+{
+  "diagnostics.globals": [
+    "RenderText",
+    "setTextBold",
+    "getTextWidth",
+    "ShopItemsFrame",
+    "Utils",
+    "addModEventListener"
+  ]
+}
