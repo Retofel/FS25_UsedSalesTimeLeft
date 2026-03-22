@@ -40,4 +40,7 @@ luac.out
 *.hex
 
 # Examples folder (game source, reference mods, logs)
-Examples/
+examples/
+
+# Temporary release files
+release_history/temp/
