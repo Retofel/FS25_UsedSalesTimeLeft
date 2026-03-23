@@ -138,6 +138,18 @@ High-level game systems. All folders (★ = most relevant to this mod):
 ## Packaging
 To create the mod zip: select the **contents** of `FS25_UsedSalesTimeLeft/` (not the folder itself) and zip them. The zip must be named `FS25_UsedSalesTimeLeft.zip` and placed in the game's `mods` folder.
 
+## Testing - To be done manually.
+Before creating a release ready version of the mod, these must be completed:
+- Disable IS_DEBUG in UsedSalesTimeLeft.lua
+- Test on a fresh save, no other mods, make sure the time left appears for the items in the shop.
+- Modify the sales.xml file manually to test the following:
+ - Remove all sales, the save with no sales produces no errors.
+ - Have at least one sale per color, the mod displays everything correctly, with no errors.
+- Test on a save with these mods enabled, the mod should work correctly, with no errors.
+ - Xtreme Used Sales Unlocker
+ - Sales Plus
+ - TidyShop: ModTitles
+
 ## Language
 Lua (FS25 scripting language)
 
