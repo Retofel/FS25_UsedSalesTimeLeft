@@ -4,11 +4,12 @@
 A Farming Simulator 25 (PC) script mod that displays the remaining time (in hours) for each item listed in the in-game **used vehicle sales shop**. The game stores these items in `sales.xml` (per save), each with a `timeLeft` attribute representing hours before the item is removed from the shop.
 
 ## Current status
-Core functionality is implemented and working. The mod hooks into `ShopItemsFrame.populateCellForItemInSection` and displays hours remaining (e.g. "5h left") in a styled green box on each used sale item in the shop UI. The time-left box is cloned from the `priceTag` discount element (a `ThreePartBitmapElement`) so it inherits the game's green background, font, and state-dependent colors (green normally, black when selected/highlighted). The box is positioned at the bottom-left of each cell and auto-sizes its width to fit the text content. All mod logic is wrapped in `pcall` for error protection. Debug logging is available via `IS_DEBUG` flag (currently enabled for development).
+Core functionality is implemented and working. The mod hooks into `ShopItemsFrame.populateCellForItemInSection` and displays hours remaining (e.g. "5h left") in a styled green box on each used sale item in the shop UI. The time-left box is cloned from the `priceTag` discount element (a `ThreePartBitmapElement`) so it inherits the game's green background, font, and state-dependent colors (green normally, black when selected/highlighted). The box is positioned at the bottom-left of each cell and auto-sizes its width to fit the text content. All mod logic is wrapped in `pcall` for error protection. Debug logging utilities live in `lib/DebugUtils.lua` and are controlled via the `DebugUtils.IS_DEBUG` flag.
 
 ## Project structure
 - `FS25_UsedSalesTimeLeft/` — the actual mod folder (this gets zipped for distribution)
   - `modDesc.xml` — mod descriptor (descVersion must match current FS25 version, currently `106`)
+  - `lib/DebugUtils.lua` — debug/logging utilities
   - `scripts/UsedSalesTimeLeft.lua` — main mod script
   - `icon_UsedSalesTimeLeft.dds` — mod icon (512x512 DDS, BC1 format, no mipmaps)
 - `examples/` — reference mods for learning patterns
@@ -149,6 +150,7 @@ Before creating a release ready version of the mod, these must be completed:
  - Xtreme Used Sales Unlocker
  - Sales Plus
  - TidyShop: ModTitles
+- A Save with a previous version of the mod, replace with the new version, make sure it works proeprly.
 
 ## Language
 Lua (FS25 scripting language)

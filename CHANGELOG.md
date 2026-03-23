@@ -1,5 +1,13 @@
 # Changelog
 
+## v0.1.0.1
+- Updated modDesc.xml
+### Internal changes:
+- Some tidying up of the code.
+- Moved the debugging logic to its own helper library.
+- Changed ORANGE to YELLOW for the color name, as it suits better to the actual color.
+- Updated CLAUDE.md
+
 ## v0.1.0.0:
 - Added color coded time left boxes that change based on the time remaining for each sale item. See modDesc.xml for the thresholds.
 - Updated mod description in modDesc.xml with color threshold details
