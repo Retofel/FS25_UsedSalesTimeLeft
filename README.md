@@ -8,7 +8,7 @@ In FS25, the used sales shop offers randomly generated items at reduced prices. 
 
 The colors of the time left boxes change according to the time remaining for each sale item, as follows:
 * 5 hours and up -> Green
-* 3 hours and up -> Orange
+* 3 hours and up -> Yellow
 * 1 hour and up -> red
 
 Supports the following FS25 mods:
