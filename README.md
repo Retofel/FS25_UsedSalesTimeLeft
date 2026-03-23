@@ -27,15 +27,6 @@ Supports the following FS25 mods:
   </tr>
 </table>
 
-<details>
-<summary>Click to see more screenshots</summary>
-
-![Screenshot 1](assets/Screenshot%20v0.1.0.0%201.png)
-![Screenshot 2](assets/Screenshot%20v0.1.0.0%202.png)
-![Screenshot 3](assets/Screenshot%20v0.1.0.0%203.png)
-
-</details>
-
 ## Installation
 > [!IMPORTANT]
 > This mod is only officially distributed through [ModHub](https://www.farming-simulator.com/mods.php) and [this GitHub repository](https://github.com/Retofel/FS25_UsedSalesTimeLeft). If you obtained it from another source, I recommend deleting it and downloading from one of these two places instead, as I have no control over what third-party sites may include in their copies.
