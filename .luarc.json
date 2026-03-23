@@ -5,6 +5,7 @@
     "getTextWidth",
     "ShopItemsFrame",
     "Utils",
-    "addModEventListener"
+    "addModEventListener",
+    "GuiOverlay"
   ]
 }
