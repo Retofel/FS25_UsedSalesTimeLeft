@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="no"?>
 <modDesc descVersion="106">
     <author>Retofel</author>
-    <version>0.1.0.0</version>
+    <version>0.1.0.1</version>
     <title>
         <en>Used Sales Time Left</en>
     </title>
     <description>
-        <en><![CDATA[In the used vehicle sale shop you would find great deals on used equipment. But how long do you have until those deals become unavailable?
+        <en><![CDATA[In the used vehicle sale shop you will find great deals on used equipment. But how long do you have until those deals become unavailable?
 This mod shows you for each deal, how long you have until it goes away (in in-game hours), in a simple, clear, color coded way.
 
 The color changes based on the hours left.
@@ -19,6 +19,7 @@ For bug reports and feature requests, see: https://github.com/Retofel/FS25_UsedS
     <iconFilename>icon_UsedSalesTimeLeft.dds</iconFilename>
     <multiplayer supported="false"/>
     <extraSourceFiles>
+        <sourceFile filename="lib/DebugUtils.lua"/>
         <sourceFile filename="scripts/UsedSalesTimeLeft.lua"/>
     </extraSourceFiles>
 </modDesc>
