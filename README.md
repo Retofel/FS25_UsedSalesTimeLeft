@@ -19,6 +19,14 @@ Supports the following FS25 mods:
 ## Screenshots
 ![Used Sales Time Left screenshot](assets/Screenshot%20v0.1.0.0%204.png)
 
+<table>
+  <tr>
+    <td><a href="assets/Screenshot%20v0.1.0.0%201.png"><img src="assets/Screenshot%20v0.1.0.0%201.png" width="270"></a></td>
+    <td><a href="assets/Screenshot%20v0.1.0.0%202.png"><img src="assets/Screenshot%20v0.1.0.0%202.png" width="270"></a></td>
+    <td><a href="assets/Screenshot%20v0.1.0.0%203.png"><img src="assets/Screenshot%20v0.1.0.0%203.png" width="270"></a></td>
+  </tr>
+</table>
+
 ## Installation
 > [!IMPORTANT]
 > This mod is only officially distributed through [ModHub](https://www.farming-simulator.com/mods.php) and [this GitHub repository](https://github.com/Retofel/FS25_UsedSalesTimeLeft). If you obtained it from another source, I recommend deleting it and downloading from one of these two places instead, as I have no control over what third-party sites may include in their copies.
