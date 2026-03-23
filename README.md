@@ -6,12 +6,17 @@ A Farming Simulator 25 mod that shows the remaining time (in hours) for each ite
 
 In FS25, the used sales shop offers randomly generated items at reduced prices. Each item has a time limit before it's removed from the shop. This mod displays that remaining time directly in the shop UI, so you can see at a glance how long each deal will be available.
 
+The colors of the time left boxes change according to the time remaining for each sale item, as follows:
+* 5 hours and up -> Green
+* 3 hours and up -> Orange
+* 1 hour and up -> red
+
 Supports:
 * Falkkor's [Xtreme Used Sales Unlocker](https://falkkor.itch.io/fs25-xtreme-used-sales-unlocker)
 * Ragman2414's [Sales Plus](https://www.farming-simulator.com/mod.php?mod_id=311691&title=fs2025)
 
 ## Screenshots
-![Used Sales Time Left screenshot](assets/Screenshot%20v0.0.3.0.png)
+![Used Sales Time Left screenshot](assets/Screenshot%20v0.1.0.0%204.png)
 
 ## Installation
 > [!IMPORTANT]
