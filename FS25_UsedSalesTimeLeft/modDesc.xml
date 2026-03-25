@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8" standalone="no"?>
-<modDesc descVersion="106">
+<modDesc descVersion="107">
     <author>Retofel</author>
-    <version>0.1.0.1</version>
+    <version>0.1.0.2</version>
     <title>
         <en>Used Sales Time Left</en>
     </title>
     <description>
-        <en><![CDATA[In the used vehicle sale shop you will find great deals on used equipment. But how long do you have until those deals become unavailable?
-This mod shows you for each deal, how long you have until it goes away (in in-game hours), in a simple, clear, color coded way.
+        <en><![CDATA[In the used vehicle sale shop you will find great deals on used equipment. But how long do you have until those deals expire?
+This mod shows you for each deal, how long you have until it expires (in in-game hours), in a simple, clear, color coded way.
 
 The color changes based on the hours left.
 5 hours and up -> Green
@@ -15,6 +15,28 @@ The color changes based on the hours left.
 1 hour and up -> Red
 
 For bug reports and feature requests, see: https://github.com/Retofel/FS25_UsedSalesTimeLeft]]></en>
+        <de><![CDATA[Im Gebrauchtwagen-Shop findest du tolle Angebote für gebrauchte Fahrzeuge. Aber wie lange hast du noch Zeit, bevor diese Angebote verfallen?
+Dieser Mod zeigt dir für jedes Angebot auf einfache, übersichtliche und farbcodierte Weise an, wie lange du noch Zeit hast, bis es verfällt (in Spielstunden).
+
+Die Farbe ändert sich je nach verbleibender Zeit.
+5 Stunden und mehr -> Grün
+3 Stunden und mehr -> Gelb
+1 Stunde und mehr -> Rot
+
+Für Fehlerberichte und Feature-Anfragen siehe: https://github.com/Retofel/FS25_UsedSalesTimeLeft
+
+(Automatisch übersetzt)]]></de>
+        <fr><![CDATA[Dans la boutique de vente de véhicules d'occasion, vous trouverez des offres exceptionnelles sur du matériel d'occasion. Mais combien de temps vous reste-t-il avant que ces offres n'expirent ?
+Ce mod vous indique, pour chaque offre, le temps qu'il vous reste avant son expiration (en heures de jeu), de manière simple, claire et à l'aide d'un code couleur.
+
+La couleur change en fonction du nombre d'heures restantes.
+5 heures et plus -> Vert
+3 heures et plus -> Jaune
+1 heure et plus -> Rouge
+
+Pour signaler des bugs ou demander des fonctionnalités, rendez-vous sur : https://github.com/Retofel/FS25_UsedSalesTimeLeft
+
+(Traduit automatiquement)]]></fr>
     </description>
     <iconFilename>icon_UsedSalesTimeLeft.dds</iconFilename>
     <multiplayer supported="false"/>

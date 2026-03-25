@@ -181,8 +181,24 @@ PDF reference books for FS modding. To extract text from these, use `py -X utf8`
 ### moddersGuideToTheModHubEN_v2.pdf (15 pages) — **LOW relevance (for now)**
 "Modder's Guide to the ModHub" by GIANTS Software. Short guide on planning, uploading to ModHub, testing, feedback, and monetization. Useful when ready to publish.
 
-### [ModHub Guidelines - Farming Simulator 25](https://forum.giants-software.com/viewtopic.php?t=209169) (forum post) — 
-Official GIANTS forum post covering ModHub submission guidelines: testing process (5 stages), metadata standards (icons, screenshots, filenames), console requirements, description templates, and modder rewards/compensation. Useful when preparing to publish on ModHub.
+### modHubGuidelinesENv59-1.pdf (15 pages) — **HIGH relevance for ModHub submission**
+"GIANTS Software ModHub Guidelines v5.9.1 EN" (05/06/2023). The official, detailed testing and submission guidelines document. **⚠ Written for FS22 — specific values (descVersion, icon sizes, filename prefix "FS22_") may be outdated for FS25. The process, structure, and most rules still apply, but always cross-check numeric specs against the FS25 forum post or FS25 TestRunner.** Key sections relevant to this mod:
+- **Section 1 (Overview)**: Paywall mods rejected immediately. Bundle mods where possible. 2-week grace period between updates (game-breaking fixes exempt). Run the public Testing Tool before submitting.
+- **Section 3 (Process)**: Testing flow: Self-Test → Pending/Data Check → inGame Test → PC Release (→ Console Testing → Console Release for non-script mods).
+- **Section 4 (Crossplay)**: Script mods are PC-only (no console). No fantasy brands — use "Lizard".
+- **Section 5 (Meta Data)**:
+  - **5.1**: Icons/screenshots/description must not contain logos, watermarks, links, or credits. Min 3 screenshots (first must have no text/HUD). Texts in English. ModIcon: `icon_*.dds` BC1 no mipmaps 256x256 with template background (NOTE: FS22 spec — FS25 may differ, verify). StoreIcon: `store_*.dds` BC3/BC7 no mipmaps 512x512 transparent background. BrandIcon: `brand_*.dds` BC3/BC7 no mipmaps 512x256.
+  - **5.2**: Filename must start with `FS25_`, be in English, no version numbers.
+  - **5.3**: Updates must include changelog in modDesc CDATA description. Use `_update` suffix on filename.
+  - **5.4**: descVersion must match current game version (table is FS22-specific; for FS25, check `{FS25 install}/shared/xml/documentation/modDesc.html`).
+  - **5.5**: modTitle: capital initial letter for each word. Use CDATA for description. Version must be 4-digit format (e.g. `1.0.0.0`). L10n entries must have EN & DE. L10n entries must start with capital letter.
+- **Section 7 (Machines & Tools)**: Log file must be error-free. Only necessary files in zip (.i3d, .xml, .lua, .dds). MP testing: 30 min, scripts must sync correctly.
+- **Section 8 (Crossplay)**:
+  - **8.2 (Scripts)**: Custom UI elements must have EN & DE translations. Must support aspect ratios: 4:3, 16:9, 16:10, 21:9 (preferably also 32:9, 48:9).
+- **Section 10.4 (Script Mod Description Template)**: Short but descriptive overview of what the mod adds/changes/removes, how to use it, any important info. Hotkeys explained per action (also for controller if applicable). GitHub links permitted (platform must be viewable without registration).
+
+### [ModHub Guidelines - Farming Simulator 25](https://forum.giants-software.com/viewtopic.php?t=209169) (forum post)
+Official GIANTS forum post covering ModHub submission guidelines for FS25. Supplements the v5.9.1 PDF with FS25-specific updates. Additional FS25-specific rules: zero tolerance for AI-generated imagery, no AI-modified screenshots.
 
 ### How to read PDFs programmatically
 ```bash
