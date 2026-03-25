@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" standalone="no"?>
 <modDesc descVersion="107">
     <author>Retofel</author>
-    <version>0.1.0.2</version>
+    <version>0.1.0.3</version>
     <title>
         <en>Used Sales Time Left</en>
     </title>
@@ -39,7 +39,7 @@ Pour signaler des bugs ou demander des fonctionnalités, rendez-vous sur : https
 (Traduit automatiquement)]]></fr>
     </description>
     <iconFilename>icon_UsedSalesTimeLeft.dds</iconFilename>
-    <multiplayer supported="false"/>
+    <multiplayer supported="true"/>
     <extraSourceFiles>
         <sourceFile filename="lib/DebugUtils.lua"/>
         <sourceFile filename="scripts/UsedSalesTimeLeft.lua"/>
