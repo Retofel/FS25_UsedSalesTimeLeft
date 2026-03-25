@@ -1,5 +1,14 @@
 # Changelog
 
+## v0.1.0.2
+- Removed the "left" postfix from the time indication, for a cleaner look, to help with clipping on some resolutions/aspect ratios, and because it's easier dealing with multiple languages that way.
+- Added German and French translations to modDesc.xml (auto translated) for GIANTS complience.
+- Updated modDesc version.
+- Fixed potential clipping for text offset and padding.
+### Internal changes:
+- Added another ModHub guidelines pdf + CLAUDE.md summary.
+
+
 ## v0.1.0.1
 - Updated modDesc.xml
 ### Internal changes:

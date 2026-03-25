@@ -6,7 +6,7 @@
 --
 
 UsedSalesTimeLeft = {}
-UsedSalesTimeLeft.TEXT_FORMAT = "%dh left" -- Format string for the time left label (%d = hours remaining)
+UsedSalesTimeLeft.TEXT_FORMAT = "%dh" -- Format string for the time left label (%d = hours remaining)
 
 -- Box background colors (RGBA, 0-1 range)
 UsedSalesTimeLeft.COLOR_GREEN = {0.22, 0.41, 0.00, 1.00}
@@ -15,7 +15,7 @@ UsedSalesTimeLeft.COLOR_RED = {0.85, 0.08, 0.08, 1.00}
 
 -- Time thresholds (hours) for color selection
 UsedSalesTimeLeft.MIN_THRESHOLD_GREEN = 5   -- 5h+ = green
-UsedSalesTimeLeft.MIN_THRESHOLD_ORANGE = 3  -- 3-4h = orange
+UsedSalesTimeLeft.MIN_THRESHOLD_YELLOW = 3  -- 3-4h = yellow
 UsedSalesTimeLeft.MIN_THRESHOLD_RED = 1     -- 1-2h = red
 
 --- Returns the appropriate color for the given time left.
@@ -25,7 +25,7 @@ function UsedSalesTimeLeft.getColorForTimeLeft(timeLeft)
     local hours = math.floor(timeLeft)
     if hours >= UsedSalesTimeLeft.MIN_THRESHOLD_GREEN then
         return UsedSalesTimeLeft.COLOR_GREEN
-    elseif hours >= UsedSalesTimeLeft.MIN_THRESHOLD_ORANGE then
+    elseif hours >= UsedSalesTimeLeft.MIN_THRESHOLD_YELLOW then
         return UsedSalesTimeLeft.COLOR_YELLOW
     else
         return UsedSalesTimeLeft.COLOR_RED
@@ -77,6 +77,10 @@ function UsedSalesTimeLeft.createTimeLeftBox(discountElement, cell)
         initChild.textAlignment = RenderText.ALIGN_CENTER
     end
 
+    -- Compute aspect-ratio-safe offsets once (pixel values at 1080p reference resolution)
+    local offsetX, _ = getNormalizedScreenValues(25, 0)
+    local paddingX, _ = getNormalizedScreenValues(10, 0)
+
     -- Override draw() to force left-side positioning and auto-size
     -- width to fit text content at render time.
     local cellRef = cell
@@ -88,13 +92,12 @@ function UsedSalesTimeLeft.createTimeLeftBox(discountElement, cell)
             setTextBold(textChild.textBold or false)
             local tw = getTextWidth(textChild.textSize or 0.01852, drawSelf.ustlText)
             setTextBold(false)
-            local padding = 0.005
-            drawSelf.absSize[1] = tw + padding
+            drawSelf.absSize[1] = tw + paddingX
             textChild.absSize[1] = drawSelf.absSize[1]
         end
 
         -- Force position to left side of cell
-        local desiredX = cellRef.absPosition[1] + 0.0130
+        local desiredX = cellRef.absPosition[1] + offsetX
         drawSelf.absPosition[1] = desiredX
         -- Align children to span full box width (ALIGN_CENTER centers text within absSize)
         for _, child in ipairs(drawSelf.elements) do
