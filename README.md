@@ -17,13 +17,12 @@ Supports the following FS25 mods:
 * w33zl's [TidyShop: ModTitles](https://www.farming-simulator.com/mod.php?mod_id=310789&title=fs2025)
 
 ## Screenshots
-![Used Sales Time Left screenshot](assets/Screenshot%20v0.1.0.0%204.png)
+![Used Sales Time Left screenshot](assets/Screenshot%20v1.0.0.0%201.png)
 
 <table>
   <tr>
-    <td><a href="assets/Screenshot%20v0.1.0.0%201.png"><img src="assets/Screenshot%20v0.1.0.0%201.png" width="270"></a></td>
-    <td><a href="assets/Screenshot%20v0.1.0.0%202.png"><img src="assets/Screenshot%20v0.1.0.0%202.png" width="270"></a></td>
-    <td><a href="assets/Screenshot%20v0.1.0.0%203.png"><img src="assets/Screenshot%20v0.1.0.0%203.png" width="270"></a></td>
+    <td><a href="assets/Screenshot%20v1.0.0.0%202.png"><img src="assets/Screenshot%20v1.0.0.0%202.png" width="270"></a></td>
+    <td><a href="assets/Screenshot%20v1.0.0.0%203.png"><img src="assets/Screenshot%20v1.0.0.0%203.png" width="270"></a></td>
   </tr>
 </table>
 
