@@ -11,7 +11,7 @@ The colors of the time left boxes change according to the time remaining for eac
 * 3 hours and up -> 🟡 Yellow
 * 1 hour and up -> 🔴 Red
 
-Supports the following FS25 mods:
+Compatible with the following FS25 mods:
 * Falkkor's [Xtreme Used Sales Unlocker](https://falkkor.itch.io/fs25-xtreme-used-sales-unlocker)
 * Ragman2414's [Sales Plus](https://www.farming-simulator.com/mod.php?mod_id=311691&title=fs2025)
 * w33zl's [TidyShop: ModTitles](https://www.farming-simulator.com/mod.php?mod_id=310789&title=fs2025)
