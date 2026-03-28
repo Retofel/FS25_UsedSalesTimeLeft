@@ -1,6 +1,13 @@
 # Changelog
 
-## V0.1.0.3
+## v1.0.0.0
+- We are version 1.0.0.0 for ModHub sumbission :)
+### Internal Changes
+- Updated modDesc.xml with <l10n> for multi language complience.
+- Switched the text format to pull from modDesc.xml instead of hard coded values.
+- Added required screenshots by GIANTS.
+
+## v0.1.0.3
 ### Internal Changes
 - Post TestRunner run/testing and preparing for ModHub release.
 - Updated the mod's icon.
