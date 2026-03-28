@@ -6,7 +6,7 @@
 --
 
 UsedSalesTimeLeft = {}
-UsedSalesTimeLeft.TEXT_FORMAT = "%dh" -- Format string for the time left label (%d = hours remaining)
+UsedSalesTimeLeft.TEXT_FORMAT = nil -- Loaded from l10n in loadMap
 
 -- Box background colors (RGBA, 0-1 range)
 UsedSalesTimeLeft.COLOR_GREEN = {0.22, 0.41, 0.00, 1.00}
@@ -156,6 +156,9 @@ end
 -- time remaining on used sale items in the shop UI.
 function UsedSalesTimeLeft:loadMap(filename)
     DebugUtils.debugLog("loadMap called")
+
+    -- Load the localized time format string (e.g. "%dh") from modDesc.xml <l10n> entries
+    UsedSalesTimeLeft.TEXT_FORMAT = g_i18n:getText("ustl_timeFormat")
 
     if ShopItemsFrame == nil then
         DebugUtils.debugLog("ShopItemsFrame is nil!")
