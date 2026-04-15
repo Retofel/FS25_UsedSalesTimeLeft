@@ -31,7 +31,7 @@ Compatible with the following FS25 mods:
 > This mod is only officially distributed through [ModHub](https://www.farming-simulator.com/mods.php) and [this GitHub repository](https://github.com/Retofel/FS25_UsedSalesTimeLeft). If you obtained it from another source, I recommend deleting it and downloading from one of these two places instead, as I have no control over what third-party sites may include in their copies.
 
 ### ModHub download - Recommended
-* The latest stable version will be (hopefully) available on ModHub, so check this link first: [ModHub](https://www.farming-simulator.com/mods.php)
+* The latest stable version is available on ModHub, so check this link first: [ModHub](https://www.farming-simulator.com/mod.php?mod_id=357880&title=fs2025)
 
 ### GitHub repository download
 1. Download any version you like (`FS25_UsedSalesTimeLeft.zip`) from the [Releases page](https://github.com/Retofel/FS25_UsedSalesTimeLeft/releases)
