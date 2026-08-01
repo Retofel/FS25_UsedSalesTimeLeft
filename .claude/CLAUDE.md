@@ -8,9 +8,10 @@ Core functionality is implemented and working. The mod hooks into `ShopItemsFram
 
 ## Project structure
 - `FS25_UsedSalesTimeLeft/` — the actual mod folder (this gets zipped for distribution)
-  - `modDesc.xml` — mod descriptor (descVersion must match current FS25 version, currently `106`)
+  - `modDesc.xml` — mod descriptor (descVersion must match current FS25 version, validated against the game's log file)
   - `lib/DebugUtils.lua` — debug/logging utilities
-  - `scripts/UsedSalesTimeLeft.lua` — main mod script
+  - `scripts/UsedSalesTimeLeft.lua` — main mod script (GUI)
+  - `scripts/UsedSalesTimeLeftSync.lua` — multiplayer sync of `timeLeft` (must load *after* the main script, it extends the same table)
   - `icon_UsedSalesTimeLeft.dds` — mod icon (512x512 DDS, BC1 format, no mipmaps)
 - `examples/` — reference mods for learning patterns
 - `examples/sales.xml` — example of the game's sales data file
@@ -79,8 +80,32 @@ Used sale items are identified by `displayItem.saleItem ~= nil`. The `saleItem` 
 
 The sale system is at `g_currentMission.vehicleSaleSystem` (items are empty at `loadMap` time — only populated later).
 
+## Multiplayer: `timeLeft` is NOT synced by the base game (issue #27)
+This is the single most important non-obvious fact about this mod. `VehicleSaleAddEvent` replicates every
+field of a sale item to clients **except `timeLeft`**, and `VehicleSaleSystem:onHourChanged()` decrements it
+only under `mission:getIsServer()`, with no re-sync afterwards. So on any client `saleItem.timeLeft` is `nil`.
+Before the fix this threw inside our shop hook, and the cloned box rendered the `priceTag` discount text it
+was copied from — the "duplicated discount percentage" clients reported.
+
+`scripts/UsedSalesTimeLeftSync.lua` closes both gaps: it appends `timeLeft` to `VehicleSaleAddEvent`'s stream
+(covers creation and join, since systems re-send Add events from `onClientJoined`), and broadcasts a
+`{id, timeLeft}` snapshot after every `onHourChanged` so client values keep ticking and self-correct.
+
+Rules to keep in mind when touching that file:
+- **Never `pcall` a `readStream`/`writeStream`.** Swallowing an error mid-stream corrupts the byte layout and
+  desyncs every event packed after it. Sanitise the values instead.
+- **Validate at construction, not at serialisation.** `writeStream` runs during packet assembly, far from the
+  `broadcastEvent` call site, so an error there is unrecoverable. Build a validated array first.
+- **The written count must always equal the payload written.** Filter before counting, never inside the loop.
+- Stream widths are bounded: id and count are UInt8 (255), `timeLeft` is UInt16 (65535). GIANTS itself writes
+  `saleItem.id` as a UInt8 in `BuyVehicleData.lua`, so that ceiling matches vanilla.
+- Guards around uncertain field names (`isEnabled`, `missionDynamicInfo.isMultiplayer`) are written to fail
+  **open** — a renamed field must not silently disable sync.
+- Appending to a vanilla event changes the wire format, so server and clients must run the same mod version.
+
 ## Game source reference
-Game Lua source is in `G:\Steam\steamapps\common\Farming Simulator 25\sdk\debugger\gameSource.zip`. Extracted to `Examples/gameSource/` for reference. Note: most function bodies are stripped/empty — only signatures and comments are visible.
+- Game Lua source is in `G:\Steam\steamapps\common\Farming Simulator 25\sdk\debugger\gameSource.zip`. Extracted to `Examples/gameSource/` for reference. Note: most function bodies are stripped/empty — only signatures and comments are visible.
+- In the `G:\Steam\steamapps\common\Farming Simulator 25\sdk\xmlDoku` folder and sub folders, there are XML files which are also a reference source.
 
 ## FS25 Community Lua Documentation (online) — **CHECK HERE FIRST for any FS25 Lua API questions**
 Community-maintained API docs at: https://github.com/umbraprior/FS25-Community-LUADOC/tree/main/docs
@@ -151,6 +176,19 @@ Before creating a release ready version of the mod, these must be completed:
  - Sales Plus
  - TidyShop: ModTitles
 - A Save with a previous version of the mod, replace with the new version, make sure it works proeprly.
+
+### Multiplayer (required since v1.0.1.0 — see the sync section above)
+- Dedicated server, with a client on another PC/account: the client sees the same hours as the server.
+- Self-hosted game with a guest client: same. This is the exact setup from issue #27.
+- Let several in-game hours pass with a client in the shop: values keep counting down in step with the host.
+  (Part 1 of the fix alone would freeze them — this is what proves the hourly broadcast works.)
+- Join mid-session: connect to a server that has been running a while, open the shop, values are correct
+  immediately. This exercises the `onClientJoined` → `VehicleSaleAddEvent` path.
+- Confirm single player skips the broadcast entirely (enable `IS_DEBUG`, no sync lines in the log).
+- A sale hand-edited to a huge `timeLeft` (e.g. `999999`) clamps silently, shows `100h+`, no log errors.
+- Both server and client `log.txt` error-free; ModHub guideline §7 wants ~30 minutes of MP testing.
+- Run the mod-compatibility tests above **with a client attached**, not just in single player. Xtreme Used
+  Sales Unlocker matters most, it pushes the sale count toward the 255-item stream cap.
 
 ## Language
 Lua (FS25 scripting language)

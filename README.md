@@ -41,6 +41,10 @@ Compatible with the following FS25 mods:
 ## Support
 Found a bug? Want to suggest a new feature? Open a new issue in the [Issues page](https://github.com/Retofel/FS25_UsedSalesTimeLeft/issues).
 
+## Credits
+Thank you to everyone who takes the time to report an issue or help track one down ❤️
+* Issue [#27](https://github.com/Retofel/FS25_UsedSalesTimeLeft/issues/27) - Multiplayer sync bug reported by [ScottyMcTotty](https://github.com/ScottyMcTotty), diagnosed and tested by [Hauklotz](https://github.com/Hauklotz)
+
 ## Changelog
 See the [CHANGELOG file](https://github.com/Retofel/FS25_UsedSalesTimeLeft/blob/main/CHANGELOG.md) for a detailed list of changes in all versions.
 
