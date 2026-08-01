@@ -6,6 +6,18 @@
     "ShopItemsFrame",
     "Utils",
     "addModEventListener",
-    "GuiOverlay"
+    "GuiOverlay",
+    "g_i18n",
+    "Class",
+    "Event",
+    "InitEventClass",
+    "VehicleSaleAddEvent",
+    "VehicleSaleSystem",
+    "g_currentMission",
+    "g_server",
+    "streamReadUInt8",
+    "streamReadUInt16",
+    "streamWriteUInt8",
+    "streamWriteUInt16"
   ]
 }

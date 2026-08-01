@@ -1,5 +1,12 @@
 # Changelog
 
+## v1.0.1.0
+- Fixed the time left not showing for multiplayer clients on dedicated and hosted servers. Issue [#27](https://github.com/Retofel/FS25_UsedSalesTimeLeft/issues/27). Thanks [ScottyMcTotty](https://github.com/ScottyMcTotty), [Hauklotz](https://github.com/Hauklotz) for reporting, diagnosis and suggested fix.
+- Time left is now capped at 100 hours, anything above shows as "100h+".
+### Internal changes
+- Added `scripts/UsedSalesTimeLeftSync.lua`, which syncs `timeLeft` to clients on MP (the base game never sends it). Based on the code fix suggested by Hauklotz.
+- Updated modDesc version.
+
 ## v1.0.0.0
 - We are version 1.0.0.0 for ModHub sumbission :)
 ### Internal Changes

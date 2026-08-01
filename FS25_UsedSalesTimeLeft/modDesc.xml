@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" standalone="no"?>
-<modDesc descVersion="107">
+<modDesc descVersion="111">
     <author>Retofel</author>
-    <version>1.0.0.0</version>
+    <version>1.0.1.0</version>
     <title>
         <en>Used Sales Time Left</en>
     </title>
@@ -14,7 +14,13 @@ The color changes based on the hours left.
 3 hours and up -> Yellow
 1 hour and up -> Red
 
-For bug reports and feature requests, see: https://github.com/Retofel/FS25_UsedSalesTimeLeft]]></en>
+For bug reports and feature requests, see: https://github.com/Retofel/FS25_UsedSalesTimeLeft
+
+Changelog:
+Version 1.0.1.0:
+* Time left is now capped at 100 hours, anything above shows as "100h+".
+* Fixed the time left not showing for multiplayer clients on dedicated and hosted servers. Thanks ScottyMcTotty, Hauklotz for reporting, diagnosing and suggesting a fix.
+* Updated modDesc version.]]></en>
         <de><![CDATA[Im Gebrauchtwagen-Shop findest du tolle Angebote für gebrauchte Fahrzeuge. Aber wie lange hast du noch Zeit, bevor diese Angebote verfallen?
 Dieser Mod zeigt dir für jedes Angebot auf einfache, übersichtliche und farbcodierte Weise an, wie lange du noch Zeit hast, bis es verfällt (in Spielstunden).
 
@@ -24,6 +30,12 @@ Die Farbe ändert sich je nach verbleibender Zeit.
 1 Stunde und mehr -> Rot
 
 Für Fehlerberichte und Feature-Anfragen siehe: https://github.com/Retofel/FS25_UsedSalesTimeLeft
+
+Änderungsprotokoll:
+Version 1.0.1.0:
+* Die verbleibende Zeit ist nun auf 100 Stunden begrenzt; alles darüber hinaus wird als "100h+" angezeigt.
+* Es wurde ein Fehler behoben, durch den die verbleibende Zeit für Multiplayer-Clients auf dedizierten und gehosteten Servern nicht angezeigt wurde. Vielen Dank an ScottyMcTotty und Hauklotz für den Hinweis, die Fehlerdiagnose und den Vorschlag zur Behebung.
+* Die ModDesc-Version wurde aktualisiert.
 
 (Automatisch übersetzt)]]></de>
         <fr><![CDATA[Dans la boutique de vente de véhicules d'occasion, vous trouverez des offres exceptionnelles sur du matériel d'occasion. Mais combien de temps vous reste-t-il avant que ces offres n'expirent ?
@@ -36,6 +48,12 @@ La couleur change en fonction du nombre d'heures restantes.
 
 Pour signaler des bugs ou demander des fonctionnalités, rendez-vous sur : https://github.com/Retofel/FS25_UsedSalesTimeLeft
 
+Journal des modifications:
+Version 1.0.1.0:
+* Le temps restant est désormais plafonné à 100 heures ; tout dépassement s'affiche sous la forme "100h+".
+* Correction d'un problème empêchant l'affichage du temps restant pour les clients multijoueurs sur les serveurs dédiés et hébergés. Merci à ScottyMcTotty et Hauklotz pour avoir signalé le problème, l'avoir diagnostiqué et proposé une solution.
+* Mise à jour de la version de modDesc.
+
 (Traduit automatiquement)]]></fr>
     </description>
     <l10n>
@@ -44,11 +62,17 @@ Pour signaler des bugs ou demander des fonctionnalités, rendez-vous sur : https
             <de>%dh</de>
             <fr>%dh</fr>
         </text>
+        <text name="ustl_timeFormatCapped">
+            <en>%dh+</en>
+            <de>%dh+</de>
+            <fr>%dh+</fr>
+        </text>
     </l10n>
     <iconFilename>icon_UsedSalesTimeLeft.dds</iconFilename>
     <multiplayer supported="true"/>
     <extraSourceFiles>
         <sourceFile filename="lib/DebugUtils.lua"/>
         <sourceFile filename="scripts/UsedSalesTimeLeft.lua"/>
+        <sourceFile filename="scripts/UsedSalesTimeLeftSync.lua"/>
     </extraSourceFiles>
 </modDesc>

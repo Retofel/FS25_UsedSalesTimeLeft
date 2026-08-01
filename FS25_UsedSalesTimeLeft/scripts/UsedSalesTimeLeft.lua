@@ -7,6 +7,8 @@
 
 UsedSalesTimeLeft = {}
 UsedSalesTimeLeft.TEXT_FORMAT = nil -- Loaded from l10n in loadMap
+UsedSalesTimeLeft.TEXT_FORMAT_CAPPED = nil -- Loaded from l10n in loadMap
+UsedSalesTimeLeft.TEXT_PLACEHOLDER = "--" -- Language-neutral, shown until real hours are applied
 
 -- Box background colors (RGBA, 0-1 range)
 UsedSalesTimeLeft.COLOR_GREEN = {0.22, 0.41, 0.00, 1.00}
@@ -17,6 +19,11 @@ UsedSalesTimeLeft.COLOR_RED = {0.85, 0.08, 0.08, 1.00}
 UsedSalesTimeLeft.MIN_THRESHOLD_GREEN = 5   -- 5h+ = green
 UsedSalesTimeLeft.MIN_THRESHOLD_YELLOW = 3  -- 3-4h = yellow
 UsedSalesTimeLeft.MIN_THRESHOLD_RED = 1     -- 1-2h = red
+
+-- Upper bound for the displayed value. Anything above this shows as "100h+" instead of the
+-- real number, so mods which set huge timeLeft values can't widen the box
+-- enough to collide with other cell content.
+UsedSalesTimeLeft.MAX_DISPLAY_HOURS = 100
 
 --- Returns the appropriate color for the given time left.
 -- @param number timeLeft Hours remaining
@@ -30,6 +37,17 @@ function UsedSalesTimeLeft.getColorForTimeLeft(timeLeft)
     else
         return UsedSalesTimeLeft.COLOR_RED
     end
+end
+
+--- Returns the display string for the given time left, capped at MAX_DISPLAY_HOURS.
+-- @param number timeLeft Hours remaining
+-- @return string Formatted text, e.g. "8h", or "100h+" when above the cap
+function UsedSalesTimeLeft.formatTimeLeft(timeLeft)
+    local hours = math.floor(timeLeft)
+    if hours > UsedSalesTimeLeft.MAX_DISPLAY_HOURS then
+        return string.format(UsedSalesTimeLeft.TEXT_FORMAT_CAPPED, UsedSalesTimeLeft.MAX_DISPLAY_HOURS)
+    end
+    return string.format(UsedSalesTimeLeft.TEXT_FORMAT, hours)
 end
 
 --- Applies a color to the time-left box background and text for all GUI states.
@@ -60,7 +78,8 @@ end
 --- Clones the discount box element and configures it as a time-left display.
 -- Creates a ThreePartBitmapElement clone with the discount box's styled background,
 -- font, and state-dependent colors. Installs a draw() override to force left-side
--- positioning and auto-size width to fit text content.
+-- positioning and auto-size width to fit text content. Seeds a neutral placeholder
+-- so the clone can never render the discount value it was copied from.
 -- @param table discountElement The priceTag ThreePartBitmapElement to clone from
 -- @param table cell The ListItemElement cell to attach the clone to
 -- @return table The created time-left box element
@@ -70,11 +89,15 @@ function UsedSalesTimeLeft.createTimeLeftBox(discountElement, cell)
 
     DebugUtils.debugLogColors(timeLeftBox)
 
-    -- Fix child text: disable percentage format, ensure center alignment
+    -- Fix child text: disable percentage format, ensure center alignment, and replace
+    -- the cloned discount text with a neutral placeholder. ustlText is set on the box
+    -- itself so the draw override can auto-size instead of keeping the clone's width.
+    timeLeftBox.ustlText = UsedSalesTimeLeft.TEXT_PLACEHOLDER
     local initChild = timeLeftBox.elements[1]
     if initChild ~= nil then
-        initChild.format = 0 -- disable PERCENTAGE format
+        initChild.format = 0 -- disable PERCENTAGE format (must precede setText)
         initChild.textAlignment = RenderText.ALIGN_CENTER
+        initChild:setText(UsedSalesTimeLeft.TEXT_PLACEHOLDER)
     end
 
     -- Compute aspect-ratio-safe offsets once (pixel values at 1080p reference resolution)
@@ -115,7 +138,10 @@ end
 
 --- Shows or updates the time-left box on a sale item cell.
 -- Gets the priceTag discount element, creates the time-left box if it doesn't exist yet,
--- then sets the text to show hours remaining.
+-- then sets the text to show hours remaining. The box is hidden FIRST and revealed LAST,
+-- so that if anything in between throws, the caller's pcall swallows the error and the box
+-- stays hidden rather than showing cloned text or, on a recycled cell, the previous item's
+-- hours. A missing timeLeft is caught explicitly rather than left to that safety net.
 -- @param table cell The ListItemElement cell to update
 -- @param table sale The saleItem table containing timeLeft data
 -- @param integer section The shop list section index (for debug logging)
@@ -132,17 +158,31 @@ function UsedSalesTimeLeft.updateTimeLeftDisplay(cell, sale, section, index)
         UsedSalesTimeLeft.createTimeLeftBox(discountElement, cell)
     end
 
-    cell.ustlTimeLeft:setVisible(true)
+    -- Hide before computing. Paired with the setVisible(true) at the end, the box is
+    -- only ever shown when THIS item's color and text were both applied successfully.
+    -- Cells are recycled, so a surviving box may still hold the previous item's hours.
+    cell.ustlTimeLeft:setVisible(false)
+
+    -- On a multiplayer client the value arrives over the network (see UsedSalesTimeLeftSync.lua).
+    -- If it is ever missing, leave the box hidden by intent rather than by caught exception.
+    if type(sale.timeLeft) ~= "number" then
+        DebugUtils.debugLog("timeLeft missing for sale item, box left hidden")
+        return
+    end
+
     -- Apply color based on time remaining
     local color = UsedSalesTimeLeft.getColorForTimeLeft(sale.timeLeft)
     UsedSalesTimeLeft.applyBoxColor(cell.ustlTimeLeft, color)
     -- Set text on the child TextElement (ThreePartBitmap has no setText)
-    local timeText = string.format(UsedSalesTimeLeft.TEXT_FORMAT, math.floor(sale.timeLeft))
+    local timeText = UsedSalesTimeLeft.formatTimeLeft(sale.timeLeft)
     cell.ustlTimeLeft.ustlText = timeText -- store for draw override auto-sizing
     local textChild = cell.ustlTimeLeft.elements[1]
     if textChild ~= nil then
         textChild:setText(timeText)
     end
+
+    -- Reveal only once color and text are known-good (see function doc)
+    cell.ustlTimeLeft:setVisible(true)
     DebugUtils.debugLog(string.format(
         "timeLeft absPos=%.4f,%.4f absSize=%.4f,%.4f cellAbsPos=%.4f",
         cell.ustlTimeLeft.absPosition[1], cell.ustlTimeLeft.absPosition[2],
@@ -157,8 +197,9 @@ end
 function UsedSalesTimeLeft:loadMap(filename)
     DebugUtils.debugLog("loadMap called")
 
-    -- Load the localized time format string (e.g. "%dh") from modDesc.xml <l10n> entries
+    -- Load the localized time format strings (e.g. "%dh" / "%dh+") from modDesc.xml <l10n> entries
     UsedSalesTimeLeft.TEXT_FORMAT = g_i18n:getText("ustl_timeFormat")
+    UsedSalesTimeLeft.TEXT_FORMAT_CAPPED = g_i18n:getText("ustl_timeFormatCapped")
 
     if ShopItemsFrame == nil then
         DebugUtils.debugLog("ShopItemsFrame is nil!")
