@@ -19,7 +19,7 @@ For bug reports and feature requests, see: https://github.com/Retofel/FS25_UsedS
 Changelog:
 Version 1.0.1.0:
 * Time left is now capped at 100 hours, anything above shows as "100h+".
-* Fixed the time left not showing for multiplayer clients on dedicated and hosted servers. Thanks ScottyMcTotty, Hauklotz for reporting, diagnosing and suggesting a fix.
+* Fixed the time left not showing for multiplayer clients on dedicated servers. Thanks ScottyMcTotty, Hauklotz, FarmerMike for reporting, suggesting a fix and testing.
 * Updated modDesc version.]]></en>
         <de><![CDATA[Im Gebrauchtwagen-Shop findest du tolle Angebote für gebrauchte Fahrzeuge. Aber wie lange hast du noch Zeit, bevor diese Angebote verfallen?
 Dieser Mod zeigt dir für jedes Angebot auf einfache, übersichtliche und farbcodierte Weise an, wie lange du noch Zeit hast, bis es verfällt (in Spielstunden).
@@ -34,7 +34,7 @@ Für Fehlerberichte und Feature-Anfragen siehe: https://github.com/Retofel/FS25_
 Änderungsprotokoll:
 Version 1.0.1.0:
 * Die verbleibende Zeit ist nun auf 100 Stunden begrenzt; alles darüber hinaus wird als "100h+" angezeigt.
-* Es wurde ein Fehler behoben, durch den die verbleibende Zeit für Multiplayer-Clients auf dedizierten und gehosteten Servern nicht angezeigt wurde. Vielen Dank an ScottyMcTotty und Hauklotz für den Hinweis, die Fehlerdiagnose und den Vorschlag zur Behebung.
+* Es wurde behoben, dass die verbleibende Zeit für Multiplayer-Clients auf dedizierten Servern nicht angezeigt wurde. Vielen Dank an ScottyMcTotty, Hauklotz und FarmerMike für den Hinweis, den Lösungsvorschlag und das Testen.
 * Die ModDesc-Version wurde aktualisiert.
 
 (Automatisch übersetzt)]]></de>
@@ -51,7 +51,7 @@ Pour signaler des bugs ou demander des fonctionnalités, rendez-vous sur : https
 Journal des modifications:
 Version 1.0.1.0:
 * Le temps restant est désormais plafonné à 100 heures ; tout dépassement s'affiche sous la forme "100h+".
-* Correction d'un problème empêchant l'affichage du temps restant pour les clients multijoueurs sur les serveurs dédiés et hébergés. Merci à ScottyMcTotty et Hauklotz pour avoir signalé le problème, l'avoir diagnostiqué et proposé une solution.
+* Correction d'un problème qui empêchait l'affichage du temps restant pour les clients multijoueurs sur les serveurs dédiés. Merci à ScottyMcTotty, Hauklotz et FarmerMike pour avoir signalé le problème, proposé une solution et effectué les tests.
 * Mise à jour de la version de modDesc.
 
 (Traduit automatiquement)]]></fr>
